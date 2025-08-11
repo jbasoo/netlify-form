@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Form</title>
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <netlify-form>
+        <img src="Frame 6.png" alt="" width="500" height="532">
+
+        <form action="/.netlify/functions/form-submit">
+            <fieldset>
+                <form-field class="floating-label">
+                    <label for="firstName">First name *</label>
+                    <input
+                        name="firstName"
+                        id="firstName"
+                        type="text"
+                        autocomplete="given-name"
+                        placeholder="First name *"
+                    />
+                </form-field>
+
+                <form-field class="floating-label">
+                    <label for="lastName">Last name *</label>
+                    <input
+                        name="lastName"
+                        id="lastName"
+                        type="text"
+                        autocomplete="family-name"
+                        placeholder="Last name *"
+                        value="a"
+                    />
+                </form-field>
+            </fieldset>
+
+            <form-field class="floating-label">
+                <label for="email">Work Email *</label>
+                <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    placeholder="Work Email *"
+                    value="a@fsd.sdf"
+                />
+            </form-field>
+
+            <form-field>
+                <label for="message">Message *</label>
+                <textarea
+                    name="message"
+                    id="message"
+                    placeholder="Enter your message"
+                    required
+                >sdfdsdf</textarea>
+            </form-field>
+
+            <div class="terms">
+                For information about our privacy practices and commitment to protecting your privacy, please review our <a href="#">Privacy Policy</a>.
+            </div>
+
+            <div class="actions">
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    </netlify-form>
+</body>
+</html>

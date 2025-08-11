@@ -1,0 +1,182 @@
+:root {
+    --color-purple: #73467B;
+    --color-purple-light: #F1ECF6;
+    --color-purple-dark: color-mix(in srgb, var(--color-purple) 70%, black 30%);
+    --color-stroke: #EDEFF2;
+    --color-gray: #74777E;
+    --color-gray-lighter: #767778;
+    --border-radius: 0.8rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 62.5%;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.42857143;  /* 20/14 = 2rem = 20px */
+    align-content: center;
+    justify-content: center;
+}
+
+a {
+    color: var(--color-purple);
+
+    &:where(:hover, :focus){
+        color: var(--color-purple-dark);
+    }
+}
+
+netlify-form {
+    --field-padding: calc((5.4rem - 1lh) / 2 - 1px);
+    --field-line-height: 1.42857143; /* 20/14 = 2rem = 20px */
+
+    display: block;
+    max-width: 50rem;
+    margin-inline: auto;
+    padding: 4rem;
+    background-color: var(--color-purple-light);
+    border-radius: var(--border-radius);
+    position: relative;
+
+    > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: none;
+    }
+}
+
+form {
+    display: grid;
+    gap: 2rem;
+}
+
+form-field {
+    display: grid;
+    gap: 1rem;
+    position: relative;
+
+    > * {
+        max-width: 100%;
+    }
+
+    &.floating-label {
+        input, label {
+          transition: font-size 0.1s, padding 0.1s;
+        }
+
+        label {
+            pointer-events: none;
+            position: absolute;
+            z-index: 3;
+            padding: var(--field-padding);
+            margin: 1px;
+            color: var(--color-gray);
+        }
+
+        input {
+          padding:
+            calc((var(--field-padding) / 2) + var(--field-padding))
+            var(--field-padding)
+            calc(var(--field-padding) / 2)
+            var(--field-padding)
+          ;
+
+           /* Required to persist label position when input has value  */
+          &::placeholder {
+            color: transparent;
+          }
+        }
+
+        &:focus-within,
+        /* &:has([value]), */
+        &:not(:has(:placeholder-shown)) {
+          label {
+            font-size: 1.2rem;
+            padding:
+              calc(var(--field-padding) / 2)
+              var(--field-padding)
+              var(--field-padding)
+              var(--field-padding)
+            ;
+            color: var(--color-gray-lighter);
+          }
+        }
+    }
+}
+
+textarea, input {
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--color-stroke);
+    border-radius: var(--border-radius);
+    padding: var(--field-padding);
+    width: 100%;
+
+    &:focus-visible {
+        z-index: 2;
+        outline: 1px solid var(--color-purple);
+        outline-offset: -1px;
+    }
+}
+
+fieldset {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr)); */
+    grid-template-columns: repeat(2, 1fr);
+    border: 0;
+    margin: 0;
+    padding: 0 1px;
+
+    form-field {
+        margin-inline: -1px;
+
+        &:first-child input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child input {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}
+
+textarea {
+    field-sizing: content;
+    min-inline-size: min(100%, 32ch);
+    min-block-size: 15.2rem;
+    font: inherit;
+    padding: 1.5rem 1.4rem 0.7rem 1.5rem;
+}
+
+button {
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  border: 0;
+  background-color: var(--color-purple);
+  padding-block: calc((4.2rem - 1lh) / 2);
+  padding-inline: 2.1rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: white;
+
+  &:hover {
+    background-color: var(--color-purple-dark);
+  }
+}
+
+.terms {
+  color: var(--color-gray);
+}
