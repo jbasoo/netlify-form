@@ -95,6 +95,7 @@ form {
 .form-field {
   display: grid;
   gap: 0.6rem;
+  view-transition-name: attr(id type(<custom-ident>), none);
 
   &.floating-label {
     input, label {
@@ -158,7 +159,6 @@ textarea, input {
     border-radius: var(--border-radius);
     padding: var(--field-padding);
     width: 100%;
-    view-transition-name: attr(id type(<custom-ident>), none);
 
     &:focus-visible {
         z-index: 2;
