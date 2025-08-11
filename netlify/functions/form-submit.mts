@@ -6,7 +6,6 @@ import { Database } from '../../database.types'
 import { SubmissionSchema } from "../../form.schema";
 import z from "zod";
 
-
 // Initialize Supabase client with environment variables
 const supabase = createClient<Database>(process.env.DB_URL!, process.env.DB_API_KEY!)
 
@@ -26,7 +25,7 @@ export default async (req: Request) => {
     let url = new URL(refererUrl.origin + refererUrl.pathname)
 
     if (!validation.success) {
-      // If validation fails, set error status
+      // If validation fails, set error status param
       url.searchParams.set('status', 'error');
 
       // Flatten Zod errors for easier handling
@@ -37,7 +36,7 @@ export default async (req: Request) => {
         url.searchParams.set(`${field}Error`, errors.fieldErrors[field].join('. ') + '.');
       });
 
-      // Preserve user input by adding field values to the redirect URL
+      // Preserve user input by adding field values to the redirect URL params
       Object.keys(fields).forEach(field => {
         url.searchParams.set(field, fields[field]);
       });

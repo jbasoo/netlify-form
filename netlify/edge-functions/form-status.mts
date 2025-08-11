@@ -23,7 +23,6 @@ export default async (request, context) => {
   // Create a new HTMLRewriter instance for DOM manipulation
   const rewriter = new HTMLRewriter();
 
-
   // If there are query params, use their values to pre-fill form fields
   if(params) {
     Object.keys(fields).forEach(field => {
@@ -43,7 +42,6 @@ export default async (request, context) => {
     });
   }
 
-
   // If the form was submitted successfully, add a success message above the form
   if(params?.status == 'success') {
     rewriter.on("form", {
@@ -57,7 +55,6 @@ export default async (request, context) => {
     // Return the modified HTML response with the success message
     return rewriter.transform(response);
   }
-
 
   // If there are validation errors, add error messages to the relevant fields
   if(params?.status == 'error') {
