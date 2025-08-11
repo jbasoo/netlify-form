@@ -25,7 +25,6 @@ html {
 body {
     min-height: 100%;
     margin: 0;
-    font-size: 1.4rem;
     line-height: 1.42857143;  /* 20/14 = 2rem = 20px */
     align-content: center;
     justify-content: center;
@@ -180,27 +179,10 @@ textarea, input {
 }
 
 fieldset {
-    display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr)); */
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-    border: 0;
-    margin: 0;
-    padding: 0 1px;
-
-    .form-field {
-        margin-inline: -1px;
-
-        &:first-child input {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        &:last-child input {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-    }
+  display: grid;
+  align-items: start;
+  border: 0;
+  margin: 0;
 }
 
 textarea {

@@ -47,7 +47,7 @@ export default async (request, context) => {
     rewriter.on("form", {
       element: (element) => {
         element.prepend(`
-          <p class="form-success">Message recieved!</p>
+          <p class="form-success">Message received!</p>
         `, { html: true });
       },
     });

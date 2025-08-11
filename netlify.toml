@@ -4,3 +4,7 @@
 [[edge_functions]]
     path = "/"
     function = "form-status"
+
+[[edge_functions]]
+    path = "/v2.html"
+    function = "form-status"
