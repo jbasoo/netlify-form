@@ -39,6 +39,10 @@ a {
     }
 }
 
+::placeholder {
+  color: var(--color-gray);
+}
+
 .netlify-form {
     --field-padding: calc((5.4rem - 1lh) / 2 - 1px);
     --field-line-height: 1.42857143; /* 20/14 = 2rem = 20px */
@@ -54,10 +58,13 @@ a {
       top: 0;
       left: 0;
       z-index: 10;
+      outline: 1px dotted red;
+      outline-offset: 1rem;
       display: none;
     }
 
-    &::before {
+    /* Use a pseudo element for bg to transition without squashing the entire form */
+    &:before {
       content: "";
       display: block;
       position: absolute;
@@ -106,17 +113,22 @@ form {
         pointer-events: none;
         position: absolute;
         z-index: 3;
-        padding: var(--field-padding);
+        padding:
+          var(--field-padding)
+          1.4rem
+          var(--field-padding)
+          1.5rem
+        ;
         margin: 1px;
-        color: var(--color-gray);
+        color: var(--color-gray-lighter);
     }
 
     input {
       padding:
         calc((var(--field-padding) / 2) + var(--field-padding))
-        var(--field-padding)
+        1.4rem
         calc(var(--field-padding) / 2)
-        var(--field-padding)
+        1.5rem
       ;
 
         /* Required to persist label position when input has value  */
@@ -132,11 +144,11 @@ form {
         font-size: 1.2rem;
         padding:
           calc(var(--field-padding) / 2)
+          1.4rem
           var(--field-padding)
-          var(--field-padding)
-          var(--field-padding)
+          1.5rem
         ;
-        color: var(--color-gray-lighter);
+        color: var(--color-gray);
       }
     }
   }
