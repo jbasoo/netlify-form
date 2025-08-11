@@ -35,7 +35,7 @@ a {
     }
 }
 
-netlify-form {
+.netlify-form {
     --field-padding: calc((5.4rem - 1lh) / 2 - 1px);
     --field-line-height: 1.42857143; /* 20/14 = 2rem = 20px */
 
@@ -61,58 +61,81 @@ form {
     gap: 2rem;
 }
 
-form-field {
-    display: grid;
-    gap: 1rem;
-    position: relative;
+.field-error {
+  border-radius: var(--border-radius);
+  border: 1px solid color-mix(in srgb, red 20%, white 80%);
+  background: color-mix(in srgb, red 10%, white 90%);
+  margin: 0;
+  padding: calc(var(--field-padding) / 4) calc(var(--field-padding) / 2);
+  color: color-mix(in srgb, red 80%, black 20%);
+}
 
-    > * {
-        max-width: 100%;
+.form-success {
+  border-radius: var(--border-radius);
+  border: 1px solid color-mix(in srgb, green 20%, white 80%);
+  background: color-mix(in srgb, green 10%, white 90%);
+  margin: 0;
+  padding: calc(var(--field-padding) / 2) var(--field-padding);
+  color: color-mix(in srgb, green 80%, black 20%);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.6rem;
+
+  &.floating-label {
+    input, label {
+      transition: font-size 0.1s, padding 0.1s;
     }
 
-    &.floating-label {
-        input, label {
-          transition: font-size 0.1s, padding 0.1s;
-        }
-
-        label {
-            pointer-events: none;
-            position: absolute;
-            z-index: 3;
-            padding: var(--field-padding);
-            margin: 1px;
-            color: var(--color-gray);
-        }
-
-        input {
-          padding:
-            calc((var(--field-padding) / 2) + var(--field-padding))
-            var(--field-padding)
-            calc(var(--field-padding) / 2)
-            var(--field-padding)
-          ;
-
-           /* Required to persist label position when input has value  */
-          &::placeholder {
-            color: transparent;
-          }
-        }
-
-        &:focus-within,
-        /* &:has([value]), */
-        &:not(:has(:placeholder-shown)) {
-          label {
-            font-size: 1.2rem;
-            padding:
-              calc(var(--field-padding) / 2)
-              var(--field-padding)
-              var(--field-padding)
-              var(--field-padding)
-            ;
-            color: var(--color-gray-lighter);
-          }
-        }
+    label {
+        pointer-events: none;
+        position: absolute;
+        z-index: 3;
+        padding: var(--field-padding);
+        margin: 1px;
+        color: var(--color-gray);
     }
+
+    input {
+      padding:
+        calc((var(--field-padding) / 2) + var(--field-padding))
+        var(--field-padding)
+        calc(var(--field-padding) / 2)
+        var(--field-padding)
+      ;
+
+        /* Required to persist label position when input has value  */
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    &:focus-within,
+    &:has(:-webkit-autofill:focus),
+    &:not(:has(:placeholder-shown)) {
+      label {
+        font-size: 1.2rem;
+        padding:
+          calc(var(--field-padding) / 2)
+          var(--field-padding)
+          var(--field-padding)
+          var(--field-padding)
+        ;
+        color: var(--color-gray-lighter);
+      }
+    }
+  }
+}
+
+.field-group {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+
+  > * {
+      max-width: 100%;
+  }
 }
 
 textarea, input {
@@ -134,11 +157,12 @@ fieldset {
     display: grid;
     /* grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr)); */
     grid-template-columns: repeat(2, 1fr);
+    align-items: start;
     border: 0;
     margin: 0;
     padding: 0 1px;
 
-    form-field {
+    .form-field {
         margin-inline: -1px;
 
         &:first-child input {
@@ -154,11 +178,12 @@ fieldset {
 }
 
 textarea {
-    field-sizing: content;
-    min-inline-size: min(100%, 32ch);
-    min-block-size: 15.2rem;
-    font: inherit;
-    padding: 1.5rem 1.4rem 0.7rem 1.5rem;
+  field-sizing: content;
+  resize: block;
+  min-inline-size: 100%;
+  min-block-size: 15.2rem;
+  padding: 1.5rem 1.4rem 0.7rem 1.5rem;
+  font: inherit;
 }
 
 button {

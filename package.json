@@ -5,6 +5,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@netlify/functions": "^4.2.1"
+    "@netlify/functions": "^4.2.1",
+    "@supabase/supabase-js": "^2.54.0",
+    "zod": "^4.0.17"
   }
 }

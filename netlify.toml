@@ -1,2 +1,6 @@
 [dev]
     publish = "site"
+
+[[edge_functions]]
+    path = "/"
+    function = "form-status"

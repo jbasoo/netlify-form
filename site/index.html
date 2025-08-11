@@ -1,3 +1,7 @@
+<!--
+    https://www.smashingmagazine.com/2023/02/guide-accessible-form-validation/#accessibility-in-forms
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,61 +9,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netlify Form</title>
 
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <netlify-form>
+    <div class="netlify-form">
         <img src="Frame 6.png" alt="" width="500" height="532">
 
-        <form action="/.netlify/functions/form-submit">
+        <form action="/.netlify/functions/form-submit" novalidate>
             <fieldset>
-                <form-field class="floating-label">
-                    <label for="firstName">First name *</label>
-                    <input
-                        name="firstName"
-                        id="firstName"
-                        type="text"
-                        autocomplete="given-name"
-                        placeholder="First name *"
-                    />
-                </form-field>
+                <div id="firstNameField" class="form-field floating-label">
+                    <div class="field-group">
+                        <label for="firstName">First name *</label>
+                        <input
+                            name="firstName"
+                            id="firstName"
+                            type="text"
+                            autocomplete="given-name"
+                            placeholder="First name *"
+                            aria-required="true"
+                        />
+                            <!-- aria-invalid="true"
+                            aria-describedby="error-firstName" -->
+                    </div>
 
-                <form-field class="floating-label">
-                    <label for="lastName">Last name *</label>
-                    <input
-                        name="lastName"
-                        id="lastName"
-                        type="text"
-                        autocomplete="family-name"
-                        placeholder="Last name *"
-                        value="a"
-                    />
-                </form-field>
+                    <!-- <p class="field-error" id="error-firstName">Error</p> -->
+                </div>
+
+                <div id="lastNameField" class="form-field floating-label">
+                    <div class="field-group">
+                        <label for="lastName">Last name *</label>
+                        <input
+                            name="lastName"
+                            id="lastName"
+                            type="text"
+                            autocomplete="family-name"
+                            placeholder="Last name *"
+                            aria-required="true"
+                        />
+                    </div>
+                </div>
             </fieldset>
 
-            <form-field class="floating-label">
-                <label for="email">Work Email *</label>
-                <input
-                    name="email"
-                    id="email"
-                    type="email"
-                    placeholder="Work Email *"
-                    value="a@fsd.sdf"
-                />
-            </form-field>
+            <div id="emailField" class="form-field floating-label">
+                <div class="field-group">
+                    <label for="email">Work Email *</label>
+                    <input
+                        name="email"
+                        id="email"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="Work Email *"
+                        aria-required="true"
+                    />
+                </div>
+            </div>
 
-            <form-field>
-                <label for="message">Message *</label>
-                <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Enter your message"
-                    required
-                >sdfdsdf</textarea>
-            </form-field>
+            <div id="messageField" class="form-field">
+                <div class="field-group">
+                    <label for="message">Message *</label>
+                    <textarea
+                        name="message"
+                        id="message"
+                        placeholder="Enter your message"
+                        aria-required="true"
+                    ></textarea>
+                </div>
+            </div>
 
             <div class="terms">
                 For information about our privacy practices and commitment to protecting your privacy, please review our <a href="#">Privacy Policy</a>.
@@ -69,6 +85,6 @@
                 <button type="submit">Send Message</button>
             </div>
         </form>
-    </netlify-form>
+    </div>
 </body>
 </html>
