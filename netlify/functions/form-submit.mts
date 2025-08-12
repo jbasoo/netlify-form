@@ -49,7 +49,7 @@ export default async (req: Request) => {
         .select()
       ;
 
-      // TODO: DB error handling would go here. For now let's naively assume Supabase never goes down.
+      // DB error handling would go here. For now let's naively assume Supabase never goes down.
 
       // Set success status in the redirect URL
       url.searchParams.set('status', 'success');
