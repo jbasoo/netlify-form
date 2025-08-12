@@ -212,6 +212,7 @@ button {
 }
 
 .terms {
+  margin: 0;
   color: var(--color-gray);
   view-transition-name: terms;
 }
