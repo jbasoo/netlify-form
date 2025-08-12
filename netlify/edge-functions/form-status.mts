@@ -1,8 +1,8 @@
-
 // Import HTMLRewriter for server-side HTML manipulation
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
+import type { Context } from "@netlify/edge-functions";
 
-export default async (request, context) => {
+export default async (request: Request, context: Context) => {
   const response = await context.next();
 
   // Parse the request URL and extract query parameters

@@ -1,4 +1,5 @@
 
+import type { Context } from "@netlify/functions";
 // Import Supabase client and types
 import { createClient } from '@supabase/supabase-js'
 import { Database } from '../../database.types'
@@ -9,11 +10,11 @@ import z from "zod";
 // Initialize Supabase client with environment variables
 const supabase = createClient<Database>(process.env.DB_URL!, process.env.DB_API_KEY!)
 
-export default async (req: Request) => {
+export default async (request: Request, context: Context) => {
   // Get the referer header to redirect back to the form page
-  const referer = req.headers.get('referer');
+  const referer = request.headers.get('referer');
   // Parse the request URL and extract form fields from query params
-  const requestUrl = new URL(req.url);
+  const requestUrl = new URL(request.url);
   const fields = Object.fromEntries(requestUrl.searchParams);
 
   // Only proceed if referer is present (i.e., form was submitted from a page)
