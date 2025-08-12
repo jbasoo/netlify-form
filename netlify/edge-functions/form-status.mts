@@ -10,7 +10,6 @@ export default async (request: Request, context: Context) => {
   const params = Object.fromEntries(url.searchParams);
 
   // Map form field names to their input types
-  // Define the type for the fields object
   const fields: Record<string, 'input' | 'textarea'> = {
     email: 'input',
     firstName: 'input',
