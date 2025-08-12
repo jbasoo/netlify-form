@@ -79,7 +79,7 @@ export default async (request: Request, context: Context) => {
       });
     });
 
-    // Return the modified HTML response with error messages
+    // Return the modified HTML response with status messages
     return rewriter.transform(response);
   }
 };
