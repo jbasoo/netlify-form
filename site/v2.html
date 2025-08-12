@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Form</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="v2.css">
+</head>
+<body>
+    <div class="netlify-form">
+        <img src="Frame 6.png" alt="Overlaid image from the Figma design. Toggle 'display: none;' to test accuracy." width="500" height="532">
+
+        <form action="/.netlify/functions/form-submit">
+            <fieldset>
+                <div id="firstNameField" class="form-field">
+                    <div class="field-group">
+                        <label for="firstName">First name *</label>
+                        <input
+                            name="firstName"
+                            id="firstName"
+                            type="text"
+                            autocomplete="given-name"
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div id="lastNameField" class="form-field">
+                    <div class="field-group">
+                        <label for="lastName">Last name *</label>
+                        <input
+                            name="lastName"
+                            id="lastName"
+                            type="text"
+                            autocomplete="family-name"
+                            required
+                        />
+                    </div>
+                </div>
+            </fieldset>
+
+            <div id="emailField" class="form-field">
+                <div class="field-group">
+                    <label for="email">Work Email *</label>
+                    <input
+                        name="email"
+                        id="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+            </div>
+
+            <div id="messageField" class="form-field">
+                <div class="field-group">
+                    <label for="message">Message *</label>
+                    <textarea
+                        name="message"
+                        id="message"
+                        required
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="terms">
+                For information about our privacy practices and commitment to protecting your privacy, please review our <a href="#">Privacy Policy</a>.
+            </div>
+
+            <div>
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

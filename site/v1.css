@@ -1,0 +1,23 @@
+body {
+  font-size: 1.4rem;
+}
+
+fieldset {
+    /* grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr)); */
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1px;
+
+    .form-field {
+        margin-inline: -1px;
+
+        &:first-child input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child input {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}
