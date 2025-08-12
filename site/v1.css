@@ -20,3 +20,54 @@ fieldset {
         }
     }
 }
+
+.form-field {
+  &.floating-label {
+    input, label {
+      transition: font-size 0.1s, padding 0.1s;
+    }
+
+    label {
+        pointer-events: none;
+        position: absolute;
+        z-index: 3;
+        padding:
+          var(--field-padding)
+          1.4rem
+          var(--field-padding)
+          1.5rem
+        ;
+        margin: 1px;
+        color: var(--color-gray-lighter);
+    }
+
+    input {
+      padding:
+        calc((var(--field-padding) / 2) + var(--field-padding))
+        1.4rem
+        calc(var(--field-padding) / 2)
+        1.5rem
+      ;
+
+        /* Required to persist label position when input has value  */
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    &:focus-within,
+    &:has(:-webkit-autofill:focus),
+    &:not(:has(:placeholder-shown)) {
+      label {
+        font-size: 1.2rem;
+        padding:
+          calc(var(--field-padding) / 2)
+          1.4rem
+          var(--field-padding)
+          1.5rem
+        ;
+        color: var(--color-gray);
+      }
+    }
+  }
+}
