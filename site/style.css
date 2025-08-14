@@ -44,7 +44,6 @@ a {
 
 .netlify-form {
     --field-padding: calc((5.4rem - 1lh) / 2 - 1px);
-    --field-line-height: 1.42857143; /* 20/14 = 2rem = 20px */
 
     display: block;
     max-width: 50rem;
